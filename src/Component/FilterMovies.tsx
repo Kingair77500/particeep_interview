@@ -43,11 +43,9 @@ const FilterMovies: React.FC<PropsListMovie> = ({ setFilter }) => {
 
     useEffect(() => {
             const filterRed = init(movies);
-            console.log(filterRed)
             setCategorySelected((prevItem: {value: string, label: string}[] | []) =>
                 filterRed.map(
                     (element: {value: string, label: string}) => {
-                        console.log(element.value);
                         return prevItem.filter(
                             (elementSelected) => {
                                 if (elementSelected !== undefined)
