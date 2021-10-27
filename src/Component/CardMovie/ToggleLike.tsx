@@ -21,6 +21,10 @@ const ToggleGroup = styled(ToggleButtonGroup) `
     margin-top: ${rem(10)};
 `
 
+const Description = styled.span `
+    margin-left: ${rem(10)};
+`
+
 const ToggleLike: React.FC<PropsToggleLike> = ({likes, dislikes, myLike, myDislike, id}) => {
 
     const dispatch = useDispatch();
@@ -53,11 +57,11 @@ const ToggleLike: React.FC<PropsToggleLike> = ({likes, dislikes, myLike, myDisli
         <ToggleGroup onChange={handleChange} type="radio" name="options">
             <ToggleButton id={`like-${id}`} variant="secondary" value={1}>
                 <Like width={'23px'} height={'23px'} color={myLike ? 'red' : 'white'}/>
-                Like
+                <Description>Like</Description>
             </ToggleButton>
             <ToggleButton id={`dislike-${id}`} variant="secondary" value={2}>
                 <Dislike width={'23px'} height={'23px'} color={myDislike ? 'red' : 'white'}/>
-                DisLike
+                <Description>DisLike</Description>
             </ToggleButton>
         </ToggleGroup>
     )
