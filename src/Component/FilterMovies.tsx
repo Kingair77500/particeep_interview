@@ -39,13 +39,24 @@ const init = (movies: PropsMovie[] | []) => {
 const FilterMovies: React.FC<PropsListMovie> = ({ setFilter }) => {
 
     const movies = useTypedSelector((state) => state.movies);
-    const [categorySelected, setCategorySelected] = useState<{value: string, label: string}[]>([]);
+    const [categorySelected, setCategorySelected] = useState<{value: string, label: string}[] | []>([]);
 
     useEffect(() => {
             const filterRed = init(movies);
-            setCategorySelected((prevItem: {value: string, label: string}[]) => 
-                filterRed.map((element) => prevItem.filter(
-                (elementSelected) => element.value === elementSelected.value)[0])
+            console.log(filterRed)
+            setCategorySelected((prevItem: {value: string, label: string}[] | []) =>
+                filterRed.map(
+                    (element: {value: string, label: string}) => {
+                        console.log(element.value);
+                        return prevItem.filter(
+                            (elementSelected) => {
+                                if (elementSelected !== undefined)
+                                    if (element.value === elementSelected.value)
+                                        return elementSelected.value
+                                return []
+                            })[0];
+                    }
+                )
             )
     }, [movies])
 
