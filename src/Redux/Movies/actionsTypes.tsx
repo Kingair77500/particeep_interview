@@ -23,7 +23,7 @@ type actionDeleteMovies = {
 
 type actionLikeDislikeMovies = {
     type: ActionType.LIKE_DISLIKE;
-    payload: { myLike: boolean, myDislike: boolean, id: string };
+    payload: {likes: number, dislikes: number, myLike: boolean, myDislike: boolean, id: string };
 }
 
 export type Action = actionGetMovies | actionStockMovies | actionDeleteMovies | actionLikeDislikeMovies;
